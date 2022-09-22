@@ -14,3 +14,7 @@
 Route::get('/', 'HomeController@index');
 
 Route::get('/details/{id}', 'PostController@show');
+
+Auth::routes();
+
+Route::get('/admin', 'LoginController@index')->name('admin');
