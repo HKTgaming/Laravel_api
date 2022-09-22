@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\v1;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 use App\CustomerModel;
-use App\Http\Resources\CustomerResoure;
-use App\Http\Resources\CustomerCollection;
+use App\Http\Resources\v1\CustomerResource;
+use App\Http\Resources\v1\CustomerCollection;
 class CustomerController extends Controller
 {
     /**
@@ -17,7 +19,7 @@ class CustomerController extends Controller
     {
         //Hiển thị tất cả 
         // return CustomerModel::all();
-        // return CustomerResoure::collection(CustomerModel::paginate());
+        // return CustomerResource::collection(CustomerModel::paginate());
         return new CustomerCollection(CustomerModel::paginate(5));
     }
 
@@ -51,7 +53,7 @@ class CustomerController extends Controller
         );
         $customer = CustomerModel::create($request->all());
 
-        return new CustomerResoure($customer);
+        return new CustomerResource($customer);
 
     }
 
@@ -63,7 +65,7 @@ class CustomerController extends Controller
      */
     public function show(CustomerModel $customer)
     {
-        return new CustomerResoure($customer);
+        return new CustomerResource($customer);
     }
 
     /**
@@ -88,7 +90,7 @@ class CustomerController extends Controller
     {
         $customer -> update($request->all());
 
-        return new CustomerResoure($customer);
+        return new CustomerResource($customer);
     }
 
     /**

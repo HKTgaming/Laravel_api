@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +20,15 @@ Route::get('/',function(){
     return view('welcome');
 });
 // route::get('/customer','CustomerController@index');
-route::resource('customer','CustomerController');
+// route::resource('customer','CustomerController');
+// route::resource('customer','CustomerController')->only(['edit','create','show']);//chỉ sử dụng các phương thức trên
+// route::resource('customer','CustomerController')->except(['index','show','update','delete','store']);//không sử dụng các phương thức trên
+
+// route::resource('v1/customer','Api\v1\CustomerController');
+Route::prefix('v1')->group(function(){
+    Route::resource('customer', 'Api\v1\CustomerController')->only(['show','update','delete','store']);
+});
+
+Route::prefix('v2')->group(function(){
+    Route::resource('customer', 'Api\v2\CustomerController')->only(['show']);
+});
