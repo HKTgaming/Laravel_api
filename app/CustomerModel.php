@@ -10,6 +10,6 @@ class CustomerModel extends Model
     protected $fillabel = [
         'name_customer', 'phone_customer', 'address_customer', 'email_customer', 'city_customer'
     ];
-    protected $primaryKey = 'in_customer';
+    protected $primaryKey = 'id_customer';
     protected $table = 'customer';
 }
