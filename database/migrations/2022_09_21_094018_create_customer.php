@@ -20,7 +20,7 @@ class CreateCustomer extends Migration
             $table->string('address_customer');
             $table->string('email_customer');
             $table->string('city_customer');
-            $table->timestamps();
+            $table->timestamps(); 
         });
     }
 

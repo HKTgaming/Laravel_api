@@ -20,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/',function(){
     return view('welcome');
 });
-route::get('/customer','CustomerController@index');
+// route::get('/customer','CustomerController@index');
+route::resource('customer','CustomerController');
