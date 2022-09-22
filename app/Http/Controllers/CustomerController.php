@@ -39,7 +39,20 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
+        $request->validate(
+            [
+                'name_customer' => 'required',
+                'phone_customer' => 'required',
+                'address_customer' => 'required',
+                'email_customer' => 'required',
+                'city_customer' => 'required'
+            ]
+        );
+        $customer = CustomerModel::create($request->all());
+
+        return new CustomerResoure($customer);
+
     }
 
     /**
@@ -71,9 +84,11 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,CustomerModel $customer)
     {
-        //
+        $customer -> update($request->all());
+
+        return new CustomerResoure($customer);
     }
 
     /**
@@ -82,8 +97,9 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(CustomerModel $customer)
     {
-        //
+        //xóa người dùng
+        $customer->delete();
     }
 }
