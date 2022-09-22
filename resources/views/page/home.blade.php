@@ -27,7 +27,7 @@
                         <!-- Trending Top -->
                         <div class="trending-top mb-30">
                             <div class="trend-top-img">
-                                <img src="img/trending/trending_top.jpg" alt="">
+                                <img src="{{asset('img/trending/trending_top.jpg')}}" alt="">
                                 <div class="trend-top-cap">
                                     <span>Appetizers</span>
                                     <h2><a href="{{url('/details/1')}}">Welcome To The Best Model Winner<br> Contest At Look of the year</a></h2>
@@ -40,7 +40,7 @@
                                 <div class="col-lg-4">
                                 <div class="single-bottom mb-35">
                                     <div class="trend-bottom-img mb-30">
-                                        <img src="img/trending/trending_bottom1.jpg" alt="">
+                                        <img src="{{asset('img/trending/trending_bottom1.jpg')}}" alt="">
                                     </div>
                                     <div class="trend-bottom-cap">
                                         <span class="color1">Lifestyple</span>
@@ -51,7 +51,7 @@
                                 <div class="col-lg-4">
                                     <div class="single-bottom mb-35">
                                         <div class="trend-bottom-img mb-30">
-                                            <img src="img/trending/trending_bottom2.jpg" alt="">
+                                            <img src="{{asset('img/trending/trending_bottom2.jpg')}}" alt="">
                                         </div>
                                         <div class="trend-bottom-cap">
                                             <span class="color2">Sports</span>
@@ -62,7 +62,7 @@
                                 <div class="col-lg-4">
                                     <div class="single-bottom mb-35">
                                         <div class="trend-bottom-img mb-30">
-                                            <img src="img/trending/trending_bottom3.jpg" alt="">
+                                            <img src="{{asset('img/trending/trending_bottom3.jpg')}}" alt="">
                                         </div>
                                         <div class="trend-bottom-cap">
                                             <span class="color3">Travels</span>
