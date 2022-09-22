@@ -16,9 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/',function(){
-    return view('welcome');
-});
+route::resource('/','HomeController@index');
+
 // route::get('/customer','CustomerController@index');
 // route::resource('customer','CustomerController');
 // route::resource('customer','CustomerController')->only(['edit','create','show']);//chỉ sử dụng các phương thức trên
