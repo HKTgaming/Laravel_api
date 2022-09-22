@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\v1;
 
 use App\CategoryPost;
 use Illuminate\Http\Request;
@@ -14,7 +14,8 @@ class CategoryPostController extends Controller
      */
     public function index()
     {
-        //
+        $category = CategoryPost::all();
+        return view('layouts.category.index')->with(compact('category'));
     }
 
     /**
@@ -24,7 +25,7 @@ class CategoryPostController extends Controller
      */
     public function create()
     {
-        //
+        return view('layouts.category.create');
     }
 
     /**
@@ -35,7 +36,11 @@ class CategoryPostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new CategoryPost();
+        $category->id = $request->id;
+        $category->title_cate = $request->title_cate;
+        $category -> save();
+        return redirect()->back();
     }
 
     /**

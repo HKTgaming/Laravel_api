@@ -26,6 +26,10 @@ route::resource('/','HomeController@index');
 // route::resource('v1/customer','Api\v1\CustomerController');
 Route::prefix('v1')->group(function(){
     Route::resource('customer', 'Api\v1\CustomerController')->only(['show','update','delete','store']);
+   
+    Route::resource('category', 'Api\v1\CategoryPostController');
+   
+    Route::resource('customer', 'Api\v1\CustomerController')->only(['show','update','delete','store']);
 });
 
 Route::prefix('v2')->group(function(){

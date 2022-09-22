@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <button class="btn bnt-primary w-100 mb-2"><a href="{{route('category.create')}}">Thêm danh mục</a></button>
+                    <button class="btn bnt-primary w-100 mb-2"><a href="{{route('category.index')}}">Danh sách danh mục</a></button>
                 </div>
             </div>
         </div>
