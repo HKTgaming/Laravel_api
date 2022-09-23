@@ -29,7 +29,7 @@ Route::prefix('v1')->group(function(){
    
     Route::resource('category', 'Api\v1\CategoryPostController');
    
-    Route::resource('customer', 'Api\v1\CustomerController')->only(['show','update','delete','store']);
+    Route::resource('blogs', 'Api\v1\BlogrController');
 });
 
 Route::prefix('v2')->group(function(){

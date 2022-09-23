@@ -17,4 +17,6 @@ Route::get('/details/{id}', 'PostController@show');
 
 Auth::routes();
 
+// Route::resource('category', 'Api\v1\CategoryPostController');
+
 Route::get('/admin', 'LoginController@index')->name('admin');

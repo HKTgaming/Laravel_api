@@ -5,12 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Danh sách danh mục
+                    <button class="btn bnt-primary"><a href="{{url('/admin')}}">Quay lại trang chủ</a></button>
+                    <button class="btn bnt-primary"><a href="{{route('category.create')}}">Thêm danh mục</a></button>
+                </div>
 
                 <div class="card-body">
-                    @if (session('status'))
+                    @if (Session::has('status'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                            {{ Session::get('status') }}
                         </div>
                     @endif
 
@@ -37,14 +40,12 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="{{route('category.edit',[$cate->id])}}" method="POST">
-                                            @method('PUT')
-                                            @csrf
-                                            <input class="btn btn-sm btn-primary" type="submit" value="Chỉnh sửa"></input>
-                                        </form>
+
+                                        <a class="btn btn-sm btn-primary" type="submit" href="{{route('category.show',[$cate->id])}}">Chỉnh sửa</a>
+
                                     </td>
-                                    @endforeach
                                 </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

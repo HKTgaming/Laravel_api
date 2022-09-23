@@ -14,8 +14,8 @@
                         </div>
                     @endif
 
-                    <button class="btn bnt-primary w-100 mb-2"><a href="{{route('category.create')}}">Thêm danh mục</a></button>
                     <button class="btn bnt-primary w-100 mb-2"><a href="{{route('category.index')}}">Danh sách danh mục</a></button>
+                    <button class="btn bnt-primary w-100 mb-2"><a href="{{route('blogs.index')}}">Danh sách bài viết</a></button>
                 </div>
             </div>
         </div>

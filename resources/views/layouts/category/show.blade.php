@@ -5,8 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Thêm danh mục
-                    <button class="btn bnt-primary"><a href="{{url('/admin')}}">Quay lại trang chủ</a></button>
+                <div class="card-header">Chỉnh sửa danh mục
+                    <button class="btn bnt-primary"><a href="{{route('category.index')}}">Quay lại danh sách</a></button>
                 </div>
 
                 <div class="card-body">
@@ -21,20 +21,21 @@
                             <div class="panel panel-default" >
                                 <div class="panel-body">
                                     <div class="col-md-9">
-                                        <form action="{{route('category.store')}}" method="POST">
+                                        <form action="{{route('category.update',[$category->id])}}" method="POST">
+                                        @method('PUT')
                                         @csrf
                                         <div class="form-group">
                                             <label>Mã danh mục</label>
-                                            <input required name="id" class="form-control" readonly >
+                                            <input required name="id" class="form-control" value="{{$category->id}}" readonly >
                                         </div>
                                         <br>
                                         <div class="form-group">
                                             <label>Tên danh mục</label>
-                                            <input required name="title_cate" class="form-control" placeholder="">
+                                            <input required name="title_cate" class="form-control" value="{{$category->title_cate}}" placeholder="">
                                         </div>
                                         <br>           
                                         <div class="col-md-9">
-                                            <button name="btn_insert" type="submit" class="btn btn-success">Thêm mới</button>
+                                            <button name="btn_insert" type="submit" class="btn btn-success">Cập nhật</button>
                                         </div>
                                         </form>
                                     </div>
