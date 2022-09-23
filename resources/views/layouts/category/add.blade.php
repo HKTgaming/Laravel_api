@@ -23,10 +23,10 @@
                                     <div class="col-md-9">
                                         <form action="{{route('category.store')}}" method="POST">
                                         @csrf
-                                        <!-- <div class="form-group">
+                                        <div class="form-group">
                                             <label>Mã danh mục</label>
-                                            <input required name="id" class="form-control" readonly >
-                                        </div> -->
+                                            <input required name="id" class="form-control" placeholder="Auto Number" readonly >
+                                        </div>
                                         <br>
                                         <div class="form-group">
                                             <label>Tên danh mục</label>

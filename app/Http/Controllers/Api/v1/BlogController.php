@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Blog;
+use App\CategoryPost;
+use Storage;
+use File;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -25,7 +28,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        $category = CategoryPost::all();
+        return view('layouts.blogs.add')->with(compact('category'));
     }
 
     /**
@@ -36,7 +40,29 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Blog();
+        $post ->title = $request->title;
+        $post ->short_desc = $request->short_desc;
+        $post ->desc = $request->desc;
+        $post ->post_category_id = $request->post_category_id;
+
+        // $imgpath = $_FILES['image']['name'];
+        // $target_dir = "../public/img/upload/";
+        // $target_file = $target_dir.basename($imgpath);
+        // move_uploaded_file($_FILES['image']['tmp_name'],$target_file);
+        // $post->image = $imgpath;
+        if($request['image']){
+            $image = $request['image'];
+
+            $ext = $image->getClientOriginalExtension();
+            $name = time().'_'.$image->getClientOriginalName();
+            Storage::disk('public')->put($name,File::get($image));
+            $post -> image = $name;
+        }else{
+            $post->image = 'default.jpg';
+        }
+        $post->save();
+        return redirect()->back();
     }
 
     /**
