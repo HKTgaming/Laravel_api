@@ -17,7 +17,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::with('category')->orderBy('blogs.id','DESC')->get();
         return view('layouts.blogs.index')->with(compact('blogs'));
     }
 
@@ -46,11 +46,6 @@ class BlogController extends Controller
         $post ->desc = $request->desc;
         $post ->post_category_id = $request->post_category_id;
 
-        // $imgpath = $_FILES['image']['name'];
-        // $target_dir = "../public/img/upload/";
-        // $target_file = $target_dir.basename($imgpath);
-        // move_uploaded_file($_FILES['image']['tmp_name'],$target_file);
-        // $post->image = $imgpath;
         if($request['image']){
             $image = $request['image'];
 
@@ -62,7 +57,7 @@ class BlogController extends Controller
             $post->image = 'default.jpg';
         }
         $post->save();
-        return redirect()->back();
+        return \Redirect::route('blogs.index')->with('status','Bạn đã thêm thành công');
     }
 
     /**
@@ -71,9 +66,11 @@ class BlogController extends Controller
      * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show($blog)
     {
-        //
+        $blog = Blog::find($blog);
+        $category = CategoryPost::all();
+        return view('layouts.blogs.edit')->with(compact('category','blog'));
     }
 
     /**
@@ -94,9 +91,26 @@ class BlogController extends Controller
      * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, $blog)
     {
-        //
+        $post = Blog::find($blog);
+        $post ->title = $request->title;
+        $post ->short_desc = $request->short_desc;
+        $post ->desc = $request->desc;
+        $post ->post_category_id = $request->post_category_id;
+
+        if($request['image']){
+            unlink('public/upload/',$post->image);
+            $image = $request['image'];
+
+            $ext = $image->getClientOriginalExtension();
+            $name = time().'_'.$image->getClientOriginalName();
+            Storage::disk('public')->put($name,File::get($image));
+            $post -> image = $name;
+        }
+        $post->save();
+        return \Redirect::route('blogs.index')->with('status','Bạn đã cập nhật thành công');
+    
     }
 
     /**
@@ -105,8 +119,12 @@ class BlogController extends Controller
      * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blog $blog)
+    public function destroy($blog)
     {
-        //
+        // $path = 'public/upload/';
+        $blog = Blog::find($blog);
+        // unlink($path.$blog->image);
+        $blog->delete();
+        return \Redirect::route('blogs.index')->with('status','Bạn đã Xóa thành công');
     }
 }

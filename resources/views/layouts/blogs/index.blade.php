@@ -36,10 +36,10 @@
                                 <tr>
                                     <td>{{$post->id}}</td>
                                     <td>{{$post->title}}</td>
-                                    <td>{{$post->short_desc}}</td>
-                                    <td>{{$post->desc}}</td>
-                                    <td>{{$post->image}}</td>
-                                    <td>{{$post->post_category_id}}</td>
+                                    <td>{!!$post->short_desc!!}</td>
+                                    <td>{!!$post->desc!!}</td>
+                                    <td><img  src="{{asset('app/public/'.$post->image)}}"></td>
+                                    <td>{{$post->category->title_cate}}</td>
                                     <td>
                                         <form action="{{route('blogs.destroy',[$post->id])}}" method="POST">
                                             @method('DELETE')
