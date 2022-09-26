@@ -60,7 +60,7 @@
                                             <ul class="submenu">
                                                 @foreach($category as $key => $cate)
 
-                                                <li><a href="{{route('danh-muc.show',['id'=>$cate->id])}}">{{$cate->title_cate}}</a></li>
+                                                <li><a href="{{route('danh-muc.show',['id'=>$cate->id, 'slug'=>Str::slug($cate->title_cate)])}}">{{$cate->title_cate}}</a></li>
     
                                                 @endforeach
                                             </ul>

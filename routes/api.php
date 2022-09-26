@@ -32,6 +32,7 @@ Route::prefix('v1')->group(function(){
     Route::resource('blogs', 'Api\v1\BlogController');
 
     Route::resource('danh-muc', 'Api\v1\DanhmucController');
+    Route::resource('bai-viet', 'Api\v1\BaivietController');
 });
 
 Route::prefix('v2')->group(function(){

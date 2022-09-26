@@ -7,11 +7,16 @@ use App\Http\Controllers\Controller;
 use App\CategoryPost;
 use App\Blog;
 
-class DanhmucController extends Controller
+class BaivietController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        
+        //
     }
 
     /**
@@ -43,9 +48,9 @@ class DanhmucController extends Controller
      */
     public function show($id)
     {
-        $category_blog = Blog::with('category')->where('post_category_id', $id)->get();
+        $post_blog = Blog::with('category')->where('id', $id)->first();
         $category = CategoryPost::all();
-        return view('page.category', compact('category','category_blog'));
+        return view('page.details', compact('category', 'post_blog'));
     }
 
     /**

@@ -23,9 +23,9 @@
                                 <tr class="text-black">
                                     <th scope="col">Mã bài viết</th>
                                     <th scope="col">Tên bài viết</th>
+                                    <th scope="col">Hình ảnh</th>
                                     <th scope="col">Mô tả ngắn</th>
                                     <th scope="col">Nội dung</th>
-                                    <th scope="col">Hình ảnh</th>
                                     <th scope="col">Tên danh mục</th>
                                     <th scope="col"></th>
                                     <th scope="col"></th>
@@ -36,7 +36,7 @@
                                 <tr>
                                     <td>{{$post->id}}</td>
                                     <td>{{$post->title}}</td>
-                                    <td><img src="{{asset('/uploads/'.$post->image)}}"></td>
+                                    <td><img src="{{asset('/uploads/'.$post->image)}}" style="width:100px"></td>
                                     <td>{!!(substr($post->short_desc,0,90))!!}</td>
                                     <td>{!!(substr($post->desc,0,90))!!}</td>
                                     <td>{{$post->category->title_cate}}</td>

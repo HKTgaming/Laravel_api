@@ -100,7 +100,7 @@ class BlogController extends Controller
         $post ->post_category_id = $request->post_category_id;
 
         if($request['image']){
-            unlink('public/upload/',$post->image);
+            // unlink('uploads/',$post->image);
             $image = $request['image'];
 
             $ext = $image->getClientOriginalExtension();
@@ -121,9 +121,9 @@ class BlogController extends Controller
      */
     public function destroy($blog)
     {
-        // $path = 'public/upload/';
+        $path = 'uploads/';
         $blog = Blog::find($blog);
-        // unlink($path.$blog->image);
+        unlink($path.$blog->image);
         $blog->delete();
         return \Redirect::route('blogs.index')->with('status','Bạn đã Xóa thành công');
     }
