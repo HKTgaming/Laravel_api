@@ -44,7 +44,7 @@
                                             <img src="{{asset('uploads/'.$post->image)}}" alt="{{Str::slug($post->title)}}" style="width:200px; height:200px">
                                         </div>
                                         <div class="trend-bottom-cap">
-                                            <span class="color1">c</span>
+                                            <span class="color1">{{$post->category->title_cate}}</span>
                                             <h4><a href="{{route('bai-viet.show',['id'=>$post->id])}}">{{$post->title}}</a></h4>
                                         </div>
                                     </div>
@@ -58,7 +58,7 @@
                         @foreach($new_post as $key => $new)
                             <div class="trand-right-single d-flex">
                                 <div class="trand-right-img">
-                                    <img src="{{asset('uploads/'.$new->image)}}" alt="{{Str::slug($new->title)}}" style="width:100px; height:50px">
+                                    <img src="{{asset('uploads/'.$new->image)}}" alt="{{Str::slug($new->title)}}" style="width:100px; height:150px">
                                 </div>
                                 <div class="trand-right-cap">
                                     <span class="color1">{{$new->category->title_cate}}</span>

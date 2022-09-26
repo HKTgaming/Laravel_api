@@ -18,7 +18,7 @@ class BlogController extends Controller
     public function index()
     {
         $blogs = Blog::with('category')->orderBy('blogs.id','DESC')->get();
-        return view('layouts.blogs.index')->with(compact('blogs'));
+        return view('layouts.blogs.index',compact('blogs'));
     }
 
     /**

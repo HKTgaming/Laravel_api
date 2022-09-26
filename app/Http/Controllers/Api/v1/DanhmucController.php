@@ -45,7 +45,10 @@ class DanhmucController extends Controller
     {
         $category_blog = Blog::with('category')->where('post_category_id', $id)->get();
         $category = CategoryPost::all();
-        return view('page.category', compact('category','category_blog'));
+
+        $new_view_cate = Blog::with('category')->orderBy('views','DESC')->where('post_category_id',$id)->limit(5)->get();//hiển thị theo lượt xem của danh mục
+        $category_recomment = CategoryPost::whereNotIn('id',[$id])->get(); //Hiển thị các danh mục trừ danh mục đã hiển thị
+        return view('page.category', compact('category','category_blog', 'new_view_cate','category_recomment'));
     }
 
     /**
