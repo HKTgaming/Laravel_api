@@ -50,7 +50,7 @@ class BlogController extends Controller
             $image = $request['image'];
 
             $ext = $image->getClientOriginalExtension();
-            $name = time().'_'.$image->getClientOriginalName();
+            $name = time().''.$image->getClientOriginalName();
             Storage::disk('public')->put($name,File::get($image));
             $post -> image = $name;
         }else{

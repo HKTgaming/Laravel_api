@@ -36,9 +36,9 @@
                                 <tr>
                                     <td>{{$post->id}}</td>
                                     <td>{{$post->title}}</td>
-                                    <td>{!!$post->short_desc!!}</td>
-                                    <td>{!!$post->desc!!}</td>
-                                    <td><img  src="{{asset('app/public/'.$post->image)}}"></td>
+                                    <td><img src="{{asset('/uploads/'.$post->image)}}"></td>
+                                    <td>{!!(substr($post->short_desc,0,90))!!}</td>
+                                    <td>{!!(substr($post->desc,0,90))!!}</td>
                                     <td>{{$post->category->title_cate}}</td>
                                     <td>
                                         <form action="{{route('blogs.destroy',[$post->id])}}" method="POST">

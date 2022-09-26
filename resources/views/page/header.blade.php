@@ -53,16 +53,16 @@
                                 <nav>                  
                                     <ul id="navigation">    
                                         <li><a href="{{url('/')}}">Trang chủ</a></li>
+
                                         <li><a href="categori.html">Danh mục</a></li>
                                         <li><a href="about.html">Về chúng tôi</a></li>
-                                        <li><a href="latest_news.html">Tin tức</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="#">Pages</a>
+                                        <li><a href="#">Tin tức</a>
                                             <ul class="submenu">
-                                                <li><a href="elements.html">Element</a></li>
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="single-blog.html">Blog Details</a></li>
-                                                <li><a href="details.html">Categori Details</a></li>
+                                                @foreach($category as $key => $cate)
+
+                                                <li><a href="{{route('danh-muc.show',['id'=>$cate->id])}}">{{$cate->title_cate}}</a></li>
+    
+                                                @endforeach
                                             </ul>
                                         </li>
                                     </ul>

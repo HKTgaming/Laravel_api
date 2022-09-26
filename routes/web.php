@@ -18,5 +18,6 @@ Route::get('/details/{id}', 'PostController@show');
 Auth::routes();
 
 // Route::resource('category', 'Api\v1\CategoryPostController');
+// Route::resource('blogs', 'Api\v1\BlogController');
 
 Route::get('/admin', 'LoginController@index')->name('admin');

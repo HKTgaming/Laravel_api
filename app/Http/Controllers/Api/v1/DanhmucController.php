@@ -1,19 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\v1;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\CategoryPost;
+use App\Blog;
 
-class PostController extends Controller
+class DanhmucController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -45,7 +43,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return view('page.details');
+        $category_blog = Blog::where('post_category_id', $id)->get();
+        $category = CategoryPost::all();
+        return view('page.category', compact('category','category_blog'));
     }
 
     /**

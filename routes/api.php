@@ -30,6 +30,8 @@ Route::prefix('v1')->group(function(){
     Route::resource('category', 'Api\v1\CategoryPostController');
    
     Route::resource('blogs', 'Api\v1\BlogController');
+
+    Route::resource('danh-muc', 'Api\v1\DanhmucController');
 });
 
 Route::prefix('v2')->group(function(){
