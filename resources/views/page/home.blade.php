@@ -37,89 +37,37 @@
                         <!-- Trending Bottom -->
                         <div class="trending-bottom">
                             <div class="row">
-                                <div class="col-lg-4">
-                                <div class="single-bottom mb-35">
-                                    <div class="trend-bottom-img mb-30">
-                                        <img src="{{asset('img/trending/trending_bottom1.jpg')}}" alt="">
-                                    </div>
-                                    <div class="trend-bottom-cap">
-                                        <span class="color1">Lifestyple</span>
-                                        <h4><a href="details.html">Get the Illusion of Fuller Lashes by “Mascng.”</a></h4>
-                                    </div>
-                                </div>
-                                </div>
+                            @foreach($all_post as $key => $post)
                                 <div class="col-lg-4">
                                     <div class="single-bottom mb-35">
                                         <div class="trend-bottom-img mb-30">
-                                            <img src="{{asset('img/trending/trending_bottom2.jpg')}}" alt="">
+                                            <img src="{{asset('uploads/'.$post->image)}}" alt="{{Str::slug($post->title)}}" style="width:200px; height:200px">
                                         </div>
                                         <div class="trend-bottom-cap">
-                                            <span class="color2">Sports</span>
-                                            <h4><h4><a href="details.html">Get the Illusion of Fuller Lashes by “Mascng.”</a></h4></h4>
+                                            <span class="color1">c</span>
+                                            <h4><a href="{{route('bai-viet.show',['id'=>$post->id])}}">{{$post->title}}</a></h4>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
-                                    <div class="single-bottom mb-35">
-                                        <div class="trend-bottom-img mb-30">
-                                            <img src="{{asset('img/trending/trending_bottom3.jpg')}}" alt="">
-                                        </div>
-                                        <div class="trend-bottom-cap">
-                                            <span class="color3">Travels</span>
-                                            <h4><a href="details.html"> Welcome To The Best Model Winner Contest</a></h4>
-                                        </div>
-                                    </div>
-                                </div>
+                            @endforeach
                             </div>
                         </div>
                     </div>
                     <!-- Riht content -->
                     <div class="col-lg-4">
-                        <div class="trand-right-single d-flex">
-                            <div class="trand-right-img">
-                                <img src="img/trending/right1.jpg" alt="">
+                        @foreach($new_post as $key => $new)
+                            <div class="trand-right-single d-flex">
+                                <div class="trand-right-img">
+                                    <img src="{{asset('uploads/'.$new->image)}}" alt="{{Str::slug($new->title)}}" style="width:100px; height:50px">
+                                </div>
+                                <div class="trand-right-cap">
+                                    <span class="color1">{{$new->category->title_cate}}</span>
+                                    <h4><a href="{{route('bai-viet.show',['id'=>$new->id])}}">{{$new->title}}</a></h4>
+                                    <p>{!! substr($new->short_desc,0,100)!!}...</p>
+                                    <a href="{{route('bai-viet.show',['id'=>$new->id])}}" style="color:black">Đọc tiếp...</a>
+                                </div>
                             </div>
-                            <div class="trand-right-cap">
-                                <span class="color1">Concert</span>
-                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                            </div>
-                        </div>
-                        <div class="trand-right-single d-flex">
-                            <div class="trand-right-img">
-                                <img src="img/trending/right2.jpg" alt="">
-                            </div>
-                            <div class="trand-right-cap">
-                                <span class="color3">sea beach</span>
-                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                            </div>
-                        </div>
-                        <div class="trand-right-single d-flex">
-                            <div class="trand-right-img">
-                                <img src="img/trending/right3.jpg" alt="">
-                            </div>
-                            <div class="trand-right-cap">
-                                <span class="color2">Bike Show</span>
-                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                            </div>
-                        </div> 
-                        <div class="trand-right-single d-flex">
-                            <div class="trand-right-img">
-                                <img src="img/trending/right4.jpg" alt="">
-                            </div>
-                            <div class="trand-right-cap">
-                                <span class="color4">See beach</span>
-                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                            </div>
-                        </div>
-                        <div class="trand-right-single d-flex">
-                            <div class="trand-right-img">
-                                <img src="img/trending/right5.jpg" alt="">
-                            </div>
-                            <div class="trand-right-cap">
-                                <span class="color1">Skeping</span>
-                                <h4><a href="details.html">Welcome To The Best Model Winner Contest</a></h4>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -134,49 +82,24 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-tittle mb-30">
-                            <h3>Weekly Top News</h3>
+                            <h3>Lượt xem nhiều nhất</h3>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="weekly-news-active dot-style d-flex dot-style">
+                            @foreach($new_view as $key => $views)
                             <div class="weekly-single">
                                 <div class="weekly-img">
-                                    <img src="img/news/weeklyNews2.jpg" alt="">
+                                    <img src="{{asset('uploads/'.$views->image)}}" alt="{{Str::slug($views->title)}}" style="width:350px; height:450px">
                                 </div>
                                 <div class="weekly-caption">
-                                    <span class="color1">Strike</span>
-                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
+                                    <span class="color1">{{$views->category->title_cate}}</span>
+                                    <h4><a href="#">{{$views->title}}</a></h4>
                                 </div>
                             </div> 
-                            <div class="weekly-single active">
-                                <div class="weekly-img">
-                                        <img src="img/news/weeklyNews1.jpg" alt="">
-                                </div>
-                                <div class="weekly-caption">
-                                    <span class="color1">Strike</span>
-                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="weekly-single">
-                                <div class="weekly-img">
-                                        <img src="img/news/weeklyNews3.jpg" alt="">
-                                </div>
-                                <div class="weekly-caption">
-                                    <span class="color1">Strike</span>
-                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="weekly-single">
-                                <div class="weekly-img">
-                                    <img src="img/news/weeklyNews1.jpg" alt="">
-                                </div>
-                                <div class="weekly-caption">
-                                    <span class="color1">Strike</span>
-                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -590,7 +513,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-tittle mb-30">
-                            <h3>Weekly Top News</h3>
+                            <h3>Lượt xem nhiều</h3>
                         </div>
                     </div>
                 </div>

@@ -42,6 +42,7 @@ class BlogController extends Controller
     {
         $post = new Blog();
         $post ->title = $request->title;
+        $post ->views = $request->views;
         $post ->short_desc = $request->short_desc;
         $post ->desc = $request->desc;
         $post ->post_category_id = $request->post_category_id;
@@ -95,6 +96,7 @@ class BlogController extends Controller
     {
         $post = Blog::find($blog);
         $post ->title = $request->title;
+        $post ->views = $request->views;
         $post ->short_desc = $request->short_desc;
         $post ->desc = $request->desc;
         $post ->post_category_id = $request->post_category_id;

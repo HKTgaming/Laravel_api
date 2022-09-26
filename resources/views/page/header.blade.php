@@ -53,18 +53,9 @@
                                 <nav>                  
                                     <ul id="navigation">    
                                         <li><a href="{{url('/')}}">Trang chủ</a></li>
-
-                                        <li><a href="categori.html">Danh mục</a></li>
-                                        <li><a href="about.html">Về chúng tôi</a></li>
-                                        <li><a href="#">Tin tức</a>
-                                            <ul class="submenu">
-                                                @foreach($category as $key => $cate)
-
-                                                <li><a href="{{route('danh-muc.show',['id'=>$cate->id, 'slug'=>Str::slug($cate->title_cate)])}}">{{$cate->title_cate}}</a></li>
-    
-                                                @endforeach
-                                            </ul>
-                                        </li>
+                                        @foreach($category as $key => $cate)
+                                        <li><a href="{{route('danh-muc.show',['id'=>$cate->id, 'slug'=>Str::slug($cate->title_cate)])}}">{{$cate->title_cate}}</a></li>
+                                        @endforeach
                                     </ul>
                                 </nav>
                             </div>

@@ -1,28 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Danh sách bài viết
-                    <button class="btn bnt-primary"><a href="{{url('/admin')}}">Quay lại trang chủ</a></button>
-                    <button class="btn bnt-primary"><a href="{{route('blogs.create')}}">Thêm bài viết</a></button>
-                </div>
+    <div class="row">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Danh sách bài viết
+                        <button class="btn bnt-primary"><a href="{{url('/admin')}}">Quay lại trang chủ</a></button>
+                        <button class="btn bnt-primary"><a href="{{route('blogs.create')}}">Thêm bài viết</a></button>
+                    </div>
 
-                <div class="card-body">
-                    @if (Session::has('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ Session::get('status') }}
-                        </div>
-                    @endif
-
-                    <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                    <div class="card-body">
+                        @if (Session::has('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ Session::get('status') }}
+                            </div>
+                        @endif
+                        <table class="table table-hover table-responsive">
                             <thead>
                                 <tr class="text-black">
                                     <th scope="col">Mã bài viết</th>
                                     <th scope="col">Tên bài viết</th>
+                                    <th scope="col">Lượt xem</th>
                                     <th scope="col">Hình ảnh</th>
                                     <th scope="col">Mô tả ngắn</th>
                                     <th scope="col">Nội dung</th>
@@ -36,6 +35,7 @@
                                 <tr>
                                     <td>{{$post->id}}</td>
                                     <td>{{$post->title}}</td>
+                                    <td>{{$post->views}}</td>
                                     <td><img src="{{asset('/uploads/'.$post->image)}}" style="width:100px"></td>
                                     <td>{!!(substr($post->short_desc,0,90))!!}</td>
                                     <td>{!!(substr($post->desc,0,90))!!}</td>
@@ -55,11 +55,11 @@
                                 </tr>
                             @endforeach
                             </tbody>
-                        </table>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

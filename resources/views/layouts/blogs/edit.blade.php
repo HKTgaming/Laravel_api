@@ -29,6 +29,11 @@
                                 <input required name="title" value="{{$blog->title}}" class="form-control" placeholder="">
                             </div>
                             <br>
+                            <div class="form-group">
+                                <label>Lượt xem</label>
+                                <input required name="title" value="{{$blog->views}}" class="form-control" placeholder="" readonly>
+                            </div>
+                            <br>
 
                             <div class="form-group">
                                 <label>Hình ảnh</label>
