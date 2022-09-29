@@ -64,8 +64,9 @@
                             <div class="header-right-btn f-right d-none d-lg-block">
                                 <i class="fas fa-search special-tag"></i>
                                 <div class="search-box">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search">
+                                    <form action="{{url('tim-kiem')}}" method="GET">
+                                        @csrf
+                                        <input type="text" name="keywords" placeholder="Search">
                                         
                                     </form>
                                 </div>

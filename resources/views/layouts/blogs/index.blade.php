@@ -55,10 +55,10 @@
                                 </tr>
                             @endforeach
                             </tbody>
-                            
                         </div>
                     </div>
                 </div>
+                {{$blogs->links()}}
             </div>
         </div>
     </div>

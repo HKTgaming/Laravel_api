@@ -14,6 +14,7 @@
 Route::get('/', 'HomeController@index');
 
 Route::get('/details/{id}', 'PostController@show');
+Route::get('/tim-kiem', 'HomeController@tim_kiem');
 
 Auth::routes();
 

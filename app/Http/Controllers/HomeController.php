@@ -14,6 +14,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function tim_kiem()
+    {
+        $keywords = $_GET['keywords'];
+        $search = Blog::with('category')->where('title', 'LIKE', '%'.$keywords.'%')->orwhere('desc', 'LIKE', '%'.$keywords.'%')->orwhere('short_desc', 'LIKE', '%'.$keywords.'%')->get();
+        
+        $category = CategoryPost::all();
+
+        $category_recomment = CategoryPost::all(); //Hiển thị các danh mục trừ danh mục đã hiển thị
+        return view('page.tim_kiem', compact('category','search','keywords'));
+    }
     public function index()
     {
         $all_post = Blog::with('category')->limit(6)->get();

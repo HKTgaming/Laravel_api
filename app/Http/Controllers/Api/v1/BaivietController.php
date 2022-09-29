@@ -49,8 +49,12 @@ class BaivietController extends Controller
     public function show($id)
     {
         $post_blog = Blog::with('category')->where('id', $id)->first();
+        foreach($post_blog as $key =>$p){
+            $category_id = $post_blog->post_category_id;
+        }
+        $post_related = Blog::with('category')->where('post_category_id',$category_id)->get();// hiển thị bài viết liên quan
         $category = CategoryPost::all();
-        return view('page.details', compact('category', 'post_blog'));
+        return view('page.details', compact('category', 'post_blog', 'post_related'));
     }
 
     /**

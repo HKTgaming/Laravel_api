@@ -18,7 +18,7 @@ class CategoryPostController extends Controller
      */
     public function index()
     {
-        $category = CategoryPost::all();
+        $category = CategoryPost::paginate(5);
         return view('layouts.category.index')->with(compact('category'));
     }
 

@@ -13,6 +13,7 @@
                         </div>
                         <div class="section-tittle mb-30 pt-30">
                             <h3>{{$post_blog->title}}</h3>
+                            <p>view:{{$post_blog->views}}</p>
                         </div>
                         <div class="about-prea">
                             <p class="about-pera1 mb-25">{!!$post_blog->desc!!}</p>
@@ -114,6 +115,20 @@
                     <div class="news-poster d-none d-lg-block">
                         <img src="{{asset('img/news/news_card.jpg')}}" alt="">
                     </div>
+
+                    <hr>
+                    <h3>Bài viết liên quan</h3>
+                    @foreach($post_related as $key =>$new)
+                    <a href="{{route('bai-viet.show',['id'=>$new->id])}}">
+                        <div class="might-grid">
+                            <img src="{{asset('uploads/'.$new->image)}}" alt="" style="width:100px">
+                        </div>
+                        <div class="might-top">
+                            <p>{!! substr($new->short_desc,0,100) !!}...</p>
+                        </div>
+                        <a href="{{route('bai-viet.show',['id'=>$new->id])}}" style="color:black">Đọc tiếp</a>
+                    </a>
+                    @endforeach
                 </div>
             </div>
         </div>
