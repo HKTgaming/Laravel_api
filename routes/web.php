@@ -22,3 +22,5 @@ Auth::routes();
 // Route::resource('blogs', 'Api\v1\BlogController');
 
 Route::get('/admin', 'LoginController@index')->name('admin');
+Route::get('/admin', 'adwaw@index')->name('api');
+Route::get('/admin', 'ădaw@index')->name('api');
