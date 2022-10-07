@@ -14,14 +14,12 @@
 Route::get('/', 'HomeController@index');
 
 Route::get('/details/{id}', 'PostController@show');
-Route::get('/tim-kiem', '/admin', 'adwaw@index')->name('api')
+Route::get('/tim-kiem', 'HomeController@tim_kiem');
 
 Auth::routes();
 
-// 'HomeController@tim_kiem');
 // Route::resource('category', 'Api\v1\CategoryPostController');
 // Route::resource('blogs', 'Api\v1\BlogController');
 
-// Route::get('/admin', 'LoginController@index')->name('admin');
-Route::get;
-Route::get('/admin', 'ădaw@index')->name('api');
+Route::get('/admin', 'LoginController@index')->name('admin');
+Route::get('index', 'HomeController@index');
